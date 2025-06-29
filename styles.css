@@ -224,6 +224,12 @@ body {
     #header {
         padding: 0.75rem 1rem;
     }
+    #header span {
+        font-size: clamp(0.875rem, 3.5vw, 1.25rem); /* Adjusted for mobile screens */
+        overflow-wrap: break-word; /* Prevents text overflow */
+        line-height: 1.2; /* Improves readability */
+        margin: 0 0.5rem; /* Reduced margin to fit small screens */
+    }
     #chat-messages {
         padding: 1rem;
     }
