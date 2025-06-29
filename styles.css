@@ -218,9 +218,9 @@ body {
 }
 
 .profile-circle img {
-    width: 2.5rem; /* Fixed size to maintain shape */
-    height: 2.5rem;
-    object-fit: cover; /* Ensures image fills without distortion */
+    width: 100%; /* Reverted to original sizing */
+    height: 100%;
+    object-fit: contain; /* Reverted to original, preserves aspect ratio */
     border-radius: 50%;
 }
 
@@ -343,9 +343,10 @@ body {
         flex-shrink: 0; /* Prevent shrinking on mobile */
     }
     .profile-circle img {
-        width: 2rem; /* Fixed size for mobile */
-        height: 2rem;
-        object-fit: cover;
+        width: 100%; /* Reverted to original sizing */
+        height: 100%;
+        object-fit: contain; /* Reverted to original */
+        border-radius: 50%;
     }
     .input-wrapper {
         margin: 0.75rem;
