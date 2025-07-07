@@ -22,6 +22,68 @@ body {
     line-height: 1.6;
     animation: fadeIn 0.6s ease-out;
     font-weight: 400;
+    /* Add the starry background */
+    background-color: #0B141A; /* Dark background for stars */
+    position: relative;
+    overflow: hidden; /* Ensure stars don't overflow */
+}
+
+/* Starry background styles */
+.starry-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Place behind other content */
+    overflow: hidden;
+}
+
+/* Base style for stars */
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+/* Define different star sizes and animation durations */
+.star-small {
+    width: 2px;
+    height: 2px;
+    opacity: 0.7;
+    animation-name: moveStarSmall;
+}
+
+.star-medium {
+    width: 3px;
+    height: 3px;
+    opacity: 0.8;
+    animation-name: moveStarMedium;
+}
+
+.star-large {
+    width: 4px;
+    height: 4px;
+    opacity: 0.9;
+    animation-name: moveStarLarge;
+}
+
+/* Keyframes for star movement */
+@keyframes moveStarSmall {
+    from { transform: translateY(0) translateX(0); opacity: 0.7; }
+    to { transform: translateY(100vh) translateX(100vw); opacity: 0; }
+}
+
+@keyframes moveStarMedium {
+    from { transform: translateY(0) translateX(0); opacity: 0.8; }
+    to { transform: translateY(100vh) translateX(-100vw); opacity: 0; }
+}
+
+@keyframes moveStarLarge {
+    from { transform: translateY(0) translateX(0); opacity: 0.9; }
+    to { transform: translateY(-100vh) translateX(100vw); opacity: 0; }
 }
 
 @keyframes fadeIn {
@@ -29,19 +91,12 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Optimize font loading */
-@font-face {
-    font-family: 'Open Sans';
-    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
-    font-display: swap;
-}
-
 #chat-app {
     flex-grow: 1;
     display: flex;
-    max-width: 1000px;
-    margin: 0 auto;
-    background: #0B141A;
+    width: 100%;
+    padding: 0 clamp(1rem, 5vw, 2rem); /* Adds padding on left and right */
+    background: #0B141A; /* This will be on top of the stars */
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
     border-radius: 1.5rem;
     overflow: hidden;
@@ -51,20 +106,17 @@ body {
 #header {
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0; /* Align to left edge instead of centering with transform */
     width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
+    padding: 0.5rem clamp(1rem, 5vw, 2rem); /* Reduced padding for smaller height */
     background: linear-gradient(90deg, rgba(246, 241, 241, 0.9), rgba(246, 95, 95, 0.9));
     backdrop-filter: blur(10px);
     color: #ffffff;
-    padding: 1rem clamp(1rem, 5vw, 2rem);
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.5rem; /* Reduced gap for compactness */
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 600;
@@ -74,19 +126,20 @@ body {
 }
 
 @keyframes slideInHeader {
-    from { transform: translate(-50%, -20px); opacity: 0; }
-    to { transform: translate(-50%, 0); opacity: 1; }
+    from { transform: translateY(-20px); opacity: 0; } /* Adjusted to translateY */
+    to { transform: translateY(0); opacity: 1; }
 }
 
 #header span {
-    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    font-size: clamp(1rem, 3.5vw, 1.5rem); /* Slightly smaller font size */
     flex: 1;
     text-align: center;
+    line-height: 1.2; /* Reduced line height for compactness */
     transition: transform 0.3s ease;
 }
 
 #header img {
-    max-height: clamp(2rem, 10vw, 4rem);
+    max-height: clamp(1.5rem, 8vw, 3rem); /* Reduced image height */
 }
 
 #new-chat-button {
@@ -113,7 +166,7 @@ body {
     flex-direction: column;
     background: #0B141A;
     overflow: hidden;
-    padding-top: clamp(5rem, 15vw, 6.5rem);
+    padding-top: clamp(3rem, 10vw, 4.5rem); /* Reduced to match smaller header */
 }
 
 #chat-messages {
@@ -293,10 +346,13 @@ body {
     border-radius: 22px;
     padding: 0.5rem;
     transition: transform 0.2s ease;
+         border: 1px solid white;
+
 }
 
 .input-wrapper:focus-within {
     transform: scale(1.02);
+     border: 1px solid white;
 }
 
 #user-input {
@@ -313,10 +369,12 @@ body {
     max-height: 8rem;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
+     border: 1px solid white;
 }
 
 #user-input::placeholder {
     color: #8A929A;
+    
 }
 
 #send-button {
@@ -362,6 +420,9 @@ body {
         animation: none;
         transition: none;
     }
+    .star {
+        animation: none !important; /* Disable star animation for reduced motion */
+    }
 }
 
 .debug-visible {
@@ -370,20 +431,27 @@ body {
 
 @media (max-width: 640px) {
     #chat-app {
-        margin: 0;
+        width: 100%;
+        padding: 0 0.75rem; /* Consistent padding on smaller screens */
         border-radius: 0;
     }
     #header {
-        padding: 0.75rem 1rem;
+        padding: 0.5rem 0.75rem; /* Reduced padding for smaller screens */
     }
     #header span {
-        font-size: clamp(0.875rem, 3.5vw, 1.25rem);
+        font-size: clamp(0.75rem, 3vw, 1rem); /* Smaller font size */
         overflow-wrap: break-word;
-        line-height: 1.2;
+        line-height: 1.1; /* Tighter line height */
         margin: 0 0.5rem;
     }
+    #header img {
+        max-height: clamp(1.25rem, 7vw, 2.5rem); /* Smaller image height */
+    }
+    #chat-container {
+        padding-top: clamp(2.5rem, 8vw, 3.5rem); /* Adjusted for smaller header */
+    }
     #chat-messages {
-        padding: 1rem;
+        padding: 0.75rem;
     }
     .message-content {
         max-width: 85%;
@@ -414,11 +482,13 @@ body {
         margin-left: 0;
     }
     .input-wrapper {
-        margin: 0.75rem;
-        padding: 0.375rem;
+        margin: 0.5rem;
+        padding: 0.25rem;
+          border: 1px solid white;
     }
     #user-input {
         font-size: 0.9375rem;
+          border: 1px solid white;
     }
     #send-button {
         width: 2rem;
