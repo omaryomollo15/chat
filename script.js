@@ -1,5 +1,15 @@
-
 console.log('script.js loaded successfully');
+
+// Dynamically append cache-busting query strings to local assets
+document.querySelectorAll('link[href], script[src], img[src]').forEach(element => {
+    const url = element.getAttribute('src') || element.getAttribute('href');
+    if (url && url.includes('.')) { // Only modify local assets
+        element.setAttribute(
+            element.tagName === 'IMG' ? 'src' : 'href',
+            `${url}?v=${Date.now()}`
+        );
+    }
+});
 
 try {
     // DOM elements
@@ -143,6 +153,14 @@ try {
         console.log('Adding message, isUser:', isUser, 'Content:', content);
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('message', isUser ? 'user-message' : 'bot-message');
+        
+        // Create profile circle
+        const profileDiv = document.createElement('div');
+        profileDiv.classList.add('profile-circle');
+        profileDiv.innerHTML = isUser
+            ? `<img src="./images/logo.png" alt="Picha ya Mtumiaji" onerror="this.style.display='none'">`
+            : `<img src="./images/logo.png" alt="Nembo ya Bot ya OnfonMobile TZ" onerror="this.style.display='none'">`;
+        
         const contentDiv = document.createElement('div');
         contentDiv.classList.add('message-content');
         if (isUser || typeof content === 'string') {
@@ -150,13 +168,16 @@ try {
         } else {
             contentDiv.appendChild(content);
         }
-        if (!isUser) {
-            const profileDiv = document.createElement('div');
-            profileDiv.classList.add('profile-circle');
-            profileDiv.innerHTML = `<img src="./images/logo.png" alt="Nembo ya Bot ya OnfonMobile TZ">`;
-            messageDiv.appendChild(profileDiv);
+        
+        // Append profile circle and content in correct order
+        if (isUser) {
+            messageDiv.appendChild(contentDiv); // Content first for user messages (to align right)
+            messageDiv.appendChild(profileDiv); // Profile circle after
+        } else {
+            messageDiv.appendChild(profileDiv); // Profile circle first for bot messages
+            messageDiv.appendChild(contentDiv);
         }
-        messageDiv.appendChild(contentDiv);
+        
         chatContainer.appendChild(messageDiv);
         chatContainer.scrollTop = chatContainer.scrollHeight;
     }
@@ -306,6 +327,20 @@ try {
                 return;
             }
 
+            // Intent: nida_verification
+            if (containsKeyword(lowerCaseMessage, nidaVerificationKeywords)) {
+                console.log('Intent: nida_verification');
+                await typeMessage(botResponses["utter_nida_verification"]);
+                return;
+            }
+
+            // Intent: stk_push_otp
+            if (containsKeyword(lowerCaseMessage, stkPushOtpKeywords)) {
+                console.log('Intent: stk_push_otp');
+                await typeMessage(botResponses["utter_stk_push_otp"]);
+                return;
+            }
+
             // Intent: ask_specific_price
             let foundSpecificPrice = false;
             for (const model in phonePricingData) {
@@ -350,11 +385,18 @@ Unahitaji msaada zaidi, nipo kukusaidia.`;
 
             if (!foundSpecificPrice) {
                 console.log('Intent: fallback');
-                await typeMessage(botResponses["utter_fallback"] + "\nTafadhali jaribu kuuliza tena kwa maneno tofauti, kama 'lock oppo', 'bei za simu', au 'hatua za mauzo'.");
+                await typeMessage(botResponses["utter_fallback"] + "\nTafadhari, wasiliana na huduma kwa wateja ikiwa unahitaji msaada kuhusu suala lingine tofauti.");
             }
         } catch (error) {
-            console.error('Error in processUserMessage:', error);
-            await typeMessage("Pole, kuna tatizo la kiufundi. Tafadhali jaribu tena.");
+            console.error('Error in processUserMessage:', {
+                message: error.message,
+                stack: error.stack,
+                input: message
+            });
+            await typeMessage(
+                "Pole, kuna tatizo la kiufundi wakati wa kuchakata ujumbe wako. " +
+                "Tafadhali jaribu tena au wasiliana na huduma kwa wateja kwa msaada zaidi."
+            );
         }
     }
 
