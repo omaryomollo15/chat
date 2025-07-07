@@ -13,7 +13,6 @@ body {
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
-    background: #ffffff;
     min-height: 100dvh;
     height: 100dvh;
     display: flex;
@@ -22,20 +21,18 @@ body {
     line-height: 1.6;
     animation: fadeIn 0.6s ease-out;
     font-weight: 400;
-    /* Add the starry background */
     background-color: #0B141A; /* Dark background for stars */
     position: relative;
-    overflow: hidden; /* Ensure stars don't overflow */
 }
 
 /* Starry background styles */
 .starry-background {
-    position: absolute;
+    position: fixed; /* Changed to fixed to cover entire viewport */
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1; /* Place behind other content */
+    z-index: -1; /* Place behind all content */
     overflow: hidden;
 }
 
@@ -54,6 +51,7 @@ body {
     height: 2px;
     opacity: 0.7;
     animation-name: moveStarSmall;
+    animation-duration: 20s; /* Added duration for smooth animation */
 }
 
 .star-medium {
@@ -61,6 +59,7 @@ body {
     height: 3px;
     opacity: 0.8;
     animation-name: moveStarMedium;
+    animation-duration: 15s; /* Added duration */
 }
 
 .star-large {
@@ -68,6 +67,7 @@ body {
     height: 4px;
     opacity: 0.9;
     animation-name: moveStarLarge;
+    animation-duration: 10s; /* Added duration */
 }
 
 /* Keyframes for star movement */
@@ -95,9 +95,8 @@ body {
     flex-grow: 1;
     display: flex;
     width: 100%;
-    padding: 0 clamp(1rem, 5vw, 2rem); /* Adds padding on left and right */
-    background: #0B141A; /* This will be on top of the stars */
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    padding: 0 clamp(1rem, 5vw, 2rem);
+    background: transparent; /* Made transparent to show stars */
     border-radius: 1.5rem;
     overflow: hidden;
     height: 100dvh;
@@ -106,17 +105,17 @@ body {
 #header {
     position: fixed;
     top: 0;
-    left: 0; /* Align to left edge instead of centering with transform */
+    left: 0;
     width: 100%;
-    padding: 0.5rem clamp(1rem, 5vw, 2rem); /* Reduced padding for smaller height */
-    background: linear-gradient(90deg, rgba(246, 241, 241, 0.9), rgba(246, 95, 95, 0.9));
+    padding: 0.5rem clamp(1rem, 5vw, 2rem);
+    background: linear-gradient(90deg, rgba(246, 241, 241, 0.7), rgba(246, 95, 95, 0.7)); /* Semi-transparent */
     backdrop-filter: blur(10px);
     color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 0.5rem; /* Reduced gap for compactness */
+    gap: 0.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 600;
@@ -126,20 +125,20 @@ body {
 }
 
 @keyframes slideInHeader {
-    from { transform: translateY(-20px); opacity: 0; } /* Adjusted to translateY */
+    from { transform: translateY(-20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
 #header span {
-    font-size: clamp(1rem, 3.5vw, 1.5rem); /* Slightly smaller font size */
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
     flex: 1;
     text-align: center;
-    line-height: 1.2; /* Reduced line height for compactness */
+    line-height: 1.2;
     transition: transform 0.3s ease;
 }
 
 #header img {
-    max-height: clamp(1.5rem, 8vw, 3rem); /* Reduced image height */
+    max-height: clamp(1.5rem, 8vw, 3rem);
 }
 
 #new-chat-button {
@@ -164,9 +163,9 @@ body {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    background: #0B141A;
+    background: transparent; /* Made transparent to show stars */
     overflow: hidden;
-    padding-top: clamp(3rem, 10vw, 4.5rem); /* Reduced to match smaller header */
+    padding-top: clamp(3rem, 10vw, 4.5rem);
 }
 
 #chat-messages {
@@ -174,7 +173,7 @@ body {
     overflow-y: auto;
     padding: 2rem;
     scrollbar-width: none;
-    background: #0B141A;
+    background: transparent; /* Made transparent to show stars */
 }
 
 #chat-messages::-webkit-scrollbar {
@@ -216,10 +215,11 @@ body {
     white-space: pre-wrap;
     font-weight: 400;
     position: relative;
+    background: rgba(243, 142, 142, 0.9); /* Semi-transparent for user messages */
 }
 
 .user-message .message-content {
-    background: #F38E8E;
+    background: rgba(243, 142, 142, 0.9);
     color: white;
     border: 1px solid white;
     border-bottom-right-radius: 4px;
@@ -233,8 +233,8 @@ body {
     width: 0;
     height: 0;
     border: 8px solid transparent;
-    border-left-color: #F38E8E;
-    border-bottom-color: #F38E8E;
+    border-left-color: rgba(243, 142, 142, 0.9);
+    border-bottom-color: rgba(243, 142, 142, 0.9);
     transform: rotate(45deg);
 }
 
@@ -242,6 +242,7 @@ body {
     color: #ffffff;
     border: 1px solid white;
     border-bottom-left-radius: 4px;
+    background: rgba(28, 37, 38, 0.9); /* Semi-transparent for bot messages */
 }
 
 .bot-message .message-content::after {
@@ -252,8 +253,8 @@ body {
     width: 0;
     height: 0;
     border: 8px solid transparent;
-    border-right-color: #ffffff;
-    border-bottom-color: #ffffff;
+    border-right-color: rgba(28, 37, 38, 0.9);
+    border-bottom-color: rgba(28, 37, 38, 0.9);
     transform: rotate(-45deg);
 }
 
@@ -262,7 +263,7 @@ body {
     border-collapse: collapse;
     color: #E0E0E0;
     border-radius: 12px;
-    background: #1C2526;
+    background: rgba(28, 37, 38, 0.9); /* Semi-transparent for tables */
     animation: fadeInTable 0.5s ease-out;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
@@ -281,7 +282,7 @@ body {
 }
 
 .price-table th {
-    background: #F38E8E;
+    background: rgba(243, 142, 142, 0.9);
     color: #121212;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 600;
@@ -342,12 +343,10 @@ body {
     margin: 1rem;
     display: flex;
     align-items: center;
-    background: #1C2526;
+    background: rgba(28, 37, 38, 0.9); /* Semi-transparent for input */
     border-radius: 22px;
     padding: 0.5rem;
     transition: transform 0.2s ease;
-         border: 1px solid white;
-
 }
 
 .input-wrapper:focus-within {
@@ -374,7 +373,6 @@ body {
 
 #user-input::placeholder {
     color: #8A929A;
-    
 }
 
 #send-button {
@@ -413,6 +411,7 @@ body {
     font-size: 1rem;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
+    background: rgba(28, 37, 38, 0.9); /* Semi-transparent for typing indicator */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -421,7 +420,7 @@ body {
         transition: none;
     }
     .star {
-        animation: none !important; /* Disable star animation for reduced motion */
+        animation: none !important;
     }
 }
 
@@ -432,23 +431,23 @@ body {
 @media (max-width: 640px) {
     #chat-app {
         width: 100%;
-        padding: 0 0.75rem; /* Consistent padding on smaller screens */
+        padding: 0 0.75rem;
         border-radius: 0;
     }
     #header {
-        padding: 0.5rem 0.75rem; /* Reduced padding for smaller screens */
+        padding: 0.5rem 0.75rem;
     }
     #header span {
-        font-size: clamp(0.75rem, 3vw, 1rem); /* Smaller font size */
+        font-size: clamp(0.75rem, 3vw, 1rem);
         overflow-wrap: break-word;
-        line-height: 1.1; /* Tighter line height */
+        line-height: 1.1;
         margin: 0 0.5rem;
     }
     #header img {
-        max-height: clamp(1.25rem, 7vw, 2.5rem); /* Smaller image height */
+        max-height: clamp(1.25rem, 7vw, 2.5rem);
     }
     #chat-container {
-        padding-top: clamp(2.5rem, 8vw, 3.5rem); /* Adjusted for smaller header */
+        padding-top: clamp(2.5rem, 8vw, 3.5rem);
     }
     #chat-messages {
         padding: 0.75rem;
@@ -484,11 +483,11 @@ body {
     .input-wrapper {
         margin: 0.5rem;
         padding: 0.25rem;
-          border: 1px solid white;
+         border: 1px solid white;
     }
     #user-input {
         font-size: 0.9375rem;
-          border: 1px solid white;
+         border: 1px solid white;
     }
     #send-button {
         width: 2rem;
