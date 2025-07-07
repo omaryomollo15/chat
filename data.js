@@ -2,24 +2,21 @@ console.log('data.js loaded successfully');
 
 // --- Data for Chatbot Responses ---
 const botResponses = {
-    "utter_greet": "Habari! Karibu Onfon Microfinance Tz. Nipo hapa kukusaidia kufanikisha mauzo, unahitaji msaada gani kwa sasa?",
-    "utter_ask_bot_identity": "Mimi ni OnfonMobile TZ, nipo hapa kukusaidia kufanikisha mauzo. Unaweza kuniuliza chochote! Unahitaji msaada zaidi, nipo kukusaidia.",
+ "utter_greet": "Karibu OnfonMobile TZ! Nipo hapa kukusaidia huduma zinazohusiana na umiliki wa simu za mkopo:\n1. Mauzo ya Simu(hatua za kufanya mauzo)\n2. Bei za Simu\n3. Malipo\n4. Matengenezo ya Simu\n5. Simu Iliyopotea\n6. Kulock Simu(lock solution zote na aina ya simu)\n7.Changamoto ya NIDA. \n8. Changamoto za STK push na OTP\nUnahitaji msaada gani kwa sasa?",
+    "utter_ask_bot_identity": "Mimi ni OnfonMobile TZ! Nipohapa kukusaidia:\n. Mauzo ya Simu\n. Bei za Simu\n. Malipo ya Mkopo\n. Matengenezo ya Simu\n. Simu Iliyopotea\n. Kulock Simu\nNipo kusaidia zaidi, unahitaji nini?",
     "utter_ask_sales_process": `HATUA ZA KUFANYA MAUZO:
 
 1. Mchakato wa Mauzo Huanza Kwa kumsajili Mteja Kupitia USSD *147*04#. Mteja ni lazima awe na laini iliyosajiliwa kwa namba yake ya NIDA, namba ya NIDA na asilimia 30% ya kianzio ili kuwezesha usajili wake. NB: Kabla ya kuingiza taarifa za mteja kwenye mfumo wetu (Portal), hakikisha kuwa mteja amesajiliwa kikamilifu, amepata SMS ya simu anazoweza kukopa na laini yake ya Vodacom ina hela ya kianzio.
 
 2. Baada Ya Usajili kukamilika Anza Kujaza Taarifa Za Mteja Kwenye Mfumo Wetu (Portal).
-
 i. Unaweza kutumia kimoja kati ya hivi kumtafuta mteja kwenye mfumo:
   - Namba ya simu au
   - Namba ya NIDA.
     NB: Hakikisha umeweka namba sahihi iliyosajiliwa kupitia USSD ili kuanza mchakato wako wa mauzo.
-
 ii. Bonyeza “Add Loan” ili kuweka namba ya NIDA kwenye portal kwa ajili ya kuthibitisha taarifa za NIDA za mteja unayemuuzia simu.
   - Hakikisha NIDA namba ni sahihi. Endapo kama utakosea namba ya NIDA, basi hutaweza kuhakiki alama za vidole au kupata maswali kwenye mfumo. Hivyo basi, utashindwa kuendelea na mchakato wa mauzo. Thibitisha mara mbili kama namba ni sahihi kabla ya kuanza kufanya uthibitisho wa mteja kwa njia ya maswali au kuscan alama za vidole.
-
 iii. Thibitisha taarifa za mteja kwa kubonyeza “Confirm” mara tu picha ya mteja inapojitokeza.
-iv. Chagua aina ya simu anayoihitaji mteja.
+iv. Chagua aina ya simu anayoihitaji mteja. 
 v. Hakiki rangi na ukubwa (storage) ya simu uliyoichagua kutoka kwenye orodha.
 vi. Tuma OTP. Utapata OTP mbili, moja ya muuzaji na nyingine ya mteja.
 vii. Thibitisha umepokea OTP ili kujaza taarifa za hatua inayofuata.
@@ -39,7 +36,7 @@ Kuna njia tatu za kufanya malipo ya mkopo wako:-
    - Piga *150*00#
    - Chagua kulipa kwa Mpesa
    - Ingiza Lipa Namba 277700
-   - Weka Namba ya NIDA au namba ya simu ya mteja yenye mkopo kama namba ya kumbukumbu ya malipo (zingatia sana hapa).
+   - Weka Namba ya simu ya mteja aliyokopea mkopo kama namba ya kumbukumbu ya malipo (zingatia sana hapa).
    - Weka kiasi
    - Weka Namba ya siri
    - Thibitisha Muamala
@@ -52,31 +49,25 @@ NB: KUMBUKA YAFUATAYO:
 - Mkumbushe mteja kufanya malipo mapema laini aliyokopea ikiwa ndani ya simu ili kuepusha simu yake kujifunga.
 - Anapolipia mkumbushe awashe data ili simu yake isijifunge, inapotokea ameshindwa kabisa kupata usaidizi muelekeze apige simu huduma kwa wateja 0748770112. Unahitaji msaada zaidi, nipo kukusaidia.`,
     "utter_ask_maintenance": `MATENGENEZO:
-
 Matengenezo yote ya simu yafanyike katika vituo elekezi vya maduka ya VODACOM. Matatizo ya kimfumo pekee ndiyo yatakayofanyiwa kazi bila gharama kwa muda ambao simu itakuwa ndani ya warantii.
- 
 -Mlimani city-(Dar) 
 -SGR (Dar)
 -Tunduru(Pwani).
 -Arusha-sokoine karibu na Clock Tower. 
- 
 -Dodoma-Mkabala na TRA.
 -Morogoro Mjini. 
 -Singida-Mjini. 
 -Mwanza Nyamagana/Posta. 
 -Tabora-Mtaa Wa Sokoine. 
- 
 -Kigoma-Mjini.
 -Mbeya Mjini-Lupaway 
 -Songea -Mjini 
 -Musoma Mkonde PLaza.
- 
 Unahitaji msaada zaidi, nipo kukusaidia.`,
     "utter_ask_lost_phone": `Ikiwa umepoteza simu yako, fuata hatua hizi:
-
 - Kama mteja atapoteza simu, piga huduma kwa wateja 0748770112 kwa maelekezo na msaada zaidi.
 - Mteja anapaswa kuripoti taarifa hiyo kituo cha Polisi mara baada ya tukio ili kupata barua ya upotevu wa simu yako.
-- Ambatanisha taarifa zako na kopi ya NIDA kisha utume kwenye anuani yetu: customercare@onfonmicrofinance.co.tz. Unahitaji msaada zaidi, nipo kukusaidia.`,
+- Ambatanisha taarifa zako na kopi ya NIDA kisha utume kwenye anuani yetu:\ncustomercare@onfonmicrofinance.co.tz. Unahitaji msaada zaidi, nipo kukusaidia.`,
     "utter_all_lock_solutions": `HATUA ZA KULOCK SIMU KWA KILA LOCK SOLUTION:
 
 1. V-Trust (Vivo):
@@ -136,50 +127,215 @@ Unahitaji msaada zaidi, nipo kukusaidia.`,
 - Oppo: O-Guard
 - Samsung: Trustonic
 - Realme, Honor, ZTE: Think Adams
-Taja brand (k.m., Realme) au lock type (k.m., Think Adams) kwa maelezo ya hatua za kulock, au uliza 'lock solutions zote' kwa maelezo yote. Unahitaji msaada zaidi, nipo kukusaidia.`,
+Taja lock type (k.m., Think Adams,oguard,vtrust,paytrigger,trustonic) kwa maelezo ya hatua za kulock, au uliza 'hatua za kulock simu' kwa maelezo yote. Unahitaji msaada zaidi, nipo kukusaidia.`,
     "utter_thank_you": "Karibu tena, nakutakia mauzo mema. Unahitaji msaada zaidi, nipo kukusaidia.",
-    "utter_fallback": "Pole! Likonje ya uwezo wangu, tafadhali wasiliana na IT Team kwa msaada zaidi. Unahitaji msaada zaidi, nipo kukusaidia."
-};
+    "utter_fallback": "Samahani! Hilo linaonekana kuwa nje ya kile ninachoweza kusaidia kwa sasa,Nimebobea katika kusaidia huduma za microfinance zinazohusiana na umiliki wa simu za mkopo.\nIkiwa una swali kuhusu mauzo ya simu, bei za simu, malipo, matengenezo ya simu, simu iliyopotea, au kulock simu, nitafurahi kukusaidia.",
+    "utter_nida_verification": "IKiwa umepata changamoto upannde wa uhakiki wa NIDA ya mteja:\n1.Tafadhali hakikisha NIDA ya mteja ni sahihi.\nIli kuhakikisha kama NIDA ya mteja ni sahihi, piga *106# angalia usajili wa laini ya mteja au tumia kitambulisho cha NIDA.\n2.Hakikisha mteja anajibu maswali kwa usahihi ili kuendelea na hatua inayofuata.\nUnahitaji msaada zaidi, nipo kukusaidia.",
+    "utter_stk_push_otp": "IKiwa umepata changamoto za OTP au STK-PUSH:\n1.Hakikisha namba ya mteja haina usajili wa code 079.\n2.Hakikisha settings za simu ya mteja zinaruhusu kupokea ujumbe (SMS), au badili simu yenye laini ya mteja.\nKama vyote viko sawa wasiliana NA Team ya IT kwa msaada zaidi.\nUnahitaji msaada zaidi, nipo kukusaidia.\n"
+}
+;
 
-const phonePricingData = {
-    "oppo a18 4/64gb": {"brand": "oppo", "lock_solution": "O-Guard", "bei": 300000, "kianzio": 90000, "siku": 1700, "wiki": 11900, "mwezi": 51000},
-    "oppo a18 4/128gb": {"brand": "oppo", "lock_solution": "O-Guard", "bei": 350000, "kianzio": 108000, "siku": 2000, "wiki": 14000, "mwezi": 60000},
-    "oppo a38 4/128gb": {"brand": "oppo", "lock_solution": "O-Guard", "bei": 440000, "kianzio": 132000, "siku": 2400, "wiki": 16800, "mwezi": 72000},
-    "oppo a58 6/128gb": {"brand": "oppo", "lock_solution": "O-Guard", "bei": 510000, "kianzio": 153000, "siku": 2700, "wiki": 18900, "mwezi": 81000},
-    "oppo a58 8/128gb": {"brand": "oppo", "lock_solution": "O-Guard", "bei": 590000, "kianzio": 177000, "siku": 3100, "wiki": 21700, "mwezi": 93000},
-    "oppo a3x 4/64gb": {"brand": "oppo", "lock_solution": "O-Guard", "bei": 330000, "kianzio": 99000, "siku": 1900, "wiki": 13300, "mwezi": 57000},
-    "oppo a3x 4/128gb": {"brand": "oppo", "lock_solution": "O-Guard", "bei": 399000, "kianzio": 119700, "siku": 2200, "wiki": 15400, "mwezi": 66000},
-    "vivo y28 8/256gb": {"brand": "vivo", "lock_solution": "V-Trust", "bei": 559000, "kianzio": 167700, "siku": 3000, "wiki": 21000, "mwezi": 90000},
-    "vivo y18 6/128gb": {"brand": "vivo", "lock_solution": "V-Trust", "bei": 390000, "kianzio": 117000, "siku": 2200, "wiki": 15400, "mwezi": 66000},
-    "vivo y03 4/128gb": {"brand": "vivo", "lock_solution": "V-Trust", "bei": 332000, "kianzio": 99600, "siku": 1900, "wiki": 13300, "mwezi": 57000},
-    "vivo y03 4/64gb": {"brand": "vivo", "lock_solution": "V-Trust", "bei": 289000, "kianzio": 86700, "siku": 1700, "wiki": 11900, "mwezi": 51000},
-    "vivo y19s 6/128gb": {"brand": "vivo", "lock_solution": "V-Trust", "bei": 380000, "kianzio": 114000, "siku": 2100, "wiki": 14700, "mwezi": 63000},
-    "samsung a05 4/128gb": {"brand": "samsung", "lock_solution": "Trustonic", "bei": 325000, "kianzio": 97500, "siku": 1900, "wiki": 13300, "mwezi": 57000},
-    "samsung a05 4/64gb": {"brand": "samsung", "lock_solution": "Trustonic", "bei": 300000, "kianzio": 90000, "siku": 1700, "wiki": 11900, "mwezi": 51000},
-    "samsung a05s 4/64gb": {"brand": "samsung", "lock_solution": "Trustonic", "bei": 355000, "kianzio": 106500, "siku": 2000, "wiki": 14000, "mwezi": 60000},
-    "samsung a05s 4/128gb": {"brand": "samsung", "lock_solution": "Trustonic", "bei": 380000, "kianzio": 114000, "siku": 2100, "wiki": 14700, "mwezi": 63000},
-    "infinix note 30 pro 8/256gb": {"brand": "infinix", "lock_solution": "Pay Trigger", "bei": 480000, "kianzio": 144000, "siku": 2600, "wiki": 18200, "mwezi": 78000},
-    "infinix smart 8 3/64gb": {"brand": "infinix", "lock_solution": "Pay Trigger", "bei": 269000, "kianzio": 80700, "siku": 1600, "wiki": 11200, "mwezi": 48000},
-    "infinix smart 9 4/128gb": {"brand": "infinix", "lock_solution": "Pay Trigger", "bei": 328000, "kianzio": 98400, "siku": 1900, "wiki": 13300, "mwezi": 57000},
-    "infinix hot50i 4g/128gb": {"brand": "infinix", "lock_solution": "Pay Trigger", "bei": 340000, "kianzio": 102000, "siku": 1900, "wiki": 13300, "mwezi": 57000},
-    "infinix hot 40i 8/256gb": {"brand": "infinix", "lock_solution": "Pay Trigger", "bei": 333000, "kianzio": 99900, "siku": 1900, "wiki": 13300, "mwezi": 57000},
-    "infinix hot 50 pro+ 8/256gb": {"brand": "infinix", "lock_solution": "Pay Trigger", "bei": 590000, "kianzio": 177000, "siku": 3100, "wiki": 21700, "mwezi": 93000},
-    "tecno camon 30s 128gb/6gb": {"brand": "tecno", "lock_solution": "Pay Trigger", "bei": 580000, "kianzio": 174000, "siku": 3100, "wiki": 21600, "mwezi": 93000},
-    "tecno spark 30c 128gb/4gb": {"brand": "tecno", "lock_solution": "Pay Trigger", "bei": 330000, "kianzio": 99000, "siku": 1900, "wiki": 13300, "mwezi": 57000},
-    "realme c61 6/128gb": {"brand": "realme", "lock_solution": "Think Adams", "bei": 350000, "kianzio": 105000, "siku": 2000, "wiki": 14000, "mwezi": 60000},
-    "realme c61 6/256gb": {"brand": "realme", "lock_solution": "Think Adams", "bei": 360000, "kianzio": 108000, "siku": 2000, "wiki": 14000, "mwezi": 60000},
-    "realme note 50 4/128gb": {"brand": "realme", "lock_solution": "Think Adams", "bei": 290000, "kianzio": 87000, "siku": 1700, "wiki": 11900, "mwezi": 51000},
-    "realme note 50 6/64gb": {"brand": "realme", "lock_solution": "Think Adams", "bei": 250000, "kianzio": 75000, "siku": 1500, "wiki": 10500, "mwezi": 45000},
-    "honor x7b 8/256gb": {"brand": "honor", "lock_solution": "Think Adams", "bei": 500000, "kianzio": 150000, "siku": 2700, "wiki": 18900, "mwezi": 81000},
-    "honor x6b 256gb/6gb": {"brand": "honor", "lock_solution": "Think Adams", "bei": 400000, "kianzio": 120000, "siku": 2200, "wiki": 15400, "mwezi": 66000},
-    "honor x6b 128gb/6gb": {"brand": "honor", "lock_solution": "Think Adams", "bei": 365000, "kianzio": 109500, "siku": 2000, "wiki": 14000, "mwezi": 60000},
-    "honor x5plus 64gb/4gb": {"brand": "honor", "lock_solution": "Think Adams", "bei": 280000, "kianzio": 84000, "siku": 1700, "wiki": 11900, "mwezi": 51000},
-    "hisense e70 pro 128gb/4gb": {"brand": "hisense", "lock_solution": "Think Adams", "bei": 280000, "kianzio": 84000, "siku": 1700, "wiki": 11900, "mwezi": 51000},
-    "hisense e71 64gb/4gb": {"brand": "hisense", "lock_solution": "Think Adams", "bei": 250000, "kianzio": 75000, "siku": 1500, "wiki": 10500, "mwezi": 45000},
-    "zte a35 4g/64gb": {"brand": "zte", "lock_solution": "Think Adams", "bei": 250000, "kianzio": 75000, "siku": 1500, "wiki": 10500, "mwezi": 45000},
-    "zte a55 4g/128gb": {"brand": "zte", "lock_solution": "Think Adams", "bei": 290000, "kianzio": 87000, "siku": 1700, "wiki": 11900, "mwezi": 51000}
+const phonePricingData = 
+{
+  "infinix smart 9 3gb/64gb": {
+    "brand": "infinix",
+    "lock_solution": "Pay Trigger",
+    "bei": 245000,
+    "kianzio": 73500,
+    "siku": 1500,
+    "wiki": 10500,
+    "mwezi": 45000
+  },
+  "infinix hot 50i 4gb/128gb": {
+    "brand": "infinix",
+    "lock_solution": "Pay Trigger",
+    "bei": 310000,
+    "kianzio": 93000,
+    "siku": 1800,
+    "wiki": 12600,
+    "mwezi": 54000
+  },
+  "infinix smart 9 4gb/128gb": {
+    "brand": "infinix",
+    "lock_solution": "Pay Trigger",
+    "bei": 328000,
+    "kianzio": 98400,
+    "siku": 1900,
+    "wiki": 13300,
+    "mwezi": 57000
+  },
+  "itel a90 3gb/64gb": {
+    "brand": "itel",
+    "lock_solution": "Pay Trigger",
+    "bei": 230000,
+    "kianzio": 69000,
+    "siku": 1400,
+    "wiki": 9800,
+    "mwezi": 42000
+  },
+  "oppo a3x 4gb/64gb": {
+    "brand": "oppo",
+    "lock_solution": "O-Guard",
+    "bei": 330000,
+    "kianzio": 99000,
+    "siku": 1900,
+    "wiki": 13300,
+    "mwezi": 57000
+  },
+  "oppo a3x 4gb/128gb": {
+    "brand": "oppo",
+    "lock_solution": "O-Guard",
+    "bei": 390000,
+    "kianzio": 117000,
+    "siku": 2200,
+    "wiki": 15400,
+    "mwezi": 66000
+  },
+  "oppo a58 6gb/128gb": {
+    "brand": "oppo",
+    "lock_solution": "O-Guard",
+    "bei": 490000,
+    "kianzio": 147000,
+    "siku": 2600,
+    "wiki": 18200,
+    "mwezi": 78000
+  },
+  "oppo a58 8gb/128gb": {
+    "brand": "oppo",
+    "lock_solution": "O-Guard",
+    "bei": 550000,
+    "kianzio": 165000,
+    "siku": 2900,
+    "wiki": 20300,
+    "mwezi": 87000
+  },
+  "oppo a3x 8gb/256gb": {
+    "brand": "oppo",
+    "lock_solution": "O-Guard",
+    "bei": 620000,
+    "kianzio": 186000,
+    "siku": 3200,
+    "wiki": 22400,
+    "mwezi": 96000
+  },
+  "phillips essence 10 4gb/64gb": {
+    "brand": "phillips",
+    "lock_solution": "Pay Trigger",
+    "bei": 232000,
+    "kianzio": 69600,
+    "siku": 1400,
+    "wiki": 9800,
+    "mwezi": 42000
+  },
+  "phillips essence 10 4gb/128gb": {
+    "brand": "phillips",
+    "lock_solution": "Pay Trigger",
+    "bei": 250000,
+    "kianzio": 75000,
+    "siku": 1500,
+    "wiki": 10500,
+    "mwezi": 45000
+  },
+  "phillips essence 20 8gb/128gb": {
+    "brand": "phillips",
+    "lock_solution": "Pay Trigger",
+    "bei": 270000,
+    "kianzio": 81000,
+    "siku": 1600,
+    "wiki": 11200,
+    "mwezi": 48000
+  },
+  "phillips essence 20 16gb/256gb": {
+    "brand": "phillips",
+    "lock_solution": "Pay Trigger",
+    "bei": 355000,
+    "kianzio": 106500,
+    "siku": 2000,
+    "wiki": 14000,
+    "mwezi": 60000
+  },
+  "phillips omni 10 16gb/256gb": {
+    "brand": "phillips",
+    "lock_solution": "Pay Trigger",
+    "bei": 360000,
+    "kianzio": 108000,
+    "siku": 2000,
+    "wiki": 14000,
+    "mwezi": 60000
+  },
+  "tecno pop 9 3gb/64gb": {
+    "brand": "tecno",
+    "lock_solution": "Pay Trigger",
+    "bei": 245000,
+    "kianzio": 73500,
+    "siku": 1500,
+    "wiki": 10500,
+    "mwezi": 45000
+  },
+  "tecno pop 8 4gb/64gb": {
+    "brand": "tecno",
+    "lock_solution": "Pay Trigger",
+    "bei": 270000,
+    "kianzio": 81000,
+    "siku": 1600,
+    "wiki": 11200,
+    "mwezi": 48000
+  },
+  "vivo y04 4gb/64gb": {
+    "brand": "vivo",
+    "lock_solution": "V-Trust",
+    "bei": 280000,
+    "kianzio": 56000,
+    "siku": 1700,
+    "wiki": 11900,
+    "mwezi": 51000
+  },
+  "vivo y03 4gb/64gb": {
+    "brand": "vivo",
+    "lock_solution": "V-Trust",
+    "bei": 300000,
+    "kianzio": 60000,
+    "siku": 1800,
+    "wiki": 12600,
+    "mwezi": 54000
+  },
+  "vivo y04 4gb/128gb": {
+    "brand": "vivo",
+    "lock_solution": "V-Trust",
+    "bei": 315000,
+    "kianzio": 63000,
+    "siku": 1900,
+    "wiki": 13300,
+    "mwezi": 57000
+  },
+  "vivo y03 4gb/128gb": {
+    "brand": "vivo",
+    "lock_solution": "V-Trust",
+    "bei": 320000,
+    "kianzio": 64000,
+    "siku": 1900,
+    "wiki": 13300,
+    "mwezi": 57000
+  },
+  "vivo y19s 6gb/128gb": {
+    "brand": "vivo",
+    "lock_solution": "V-Trust",
+    "bei": 370000,
+    "kianzio": 74000,
+    "siku": 2200,
+    "wiki": 15400,
+    "mwezi": 66000
+  },
+  "vivo y28 8gb/256gb": {
+    "brand": "vivo",
+    "lock_solution": "V-Trust",
+    "bei": 520000,
+    "kianzio": 104000,
+    "siku": 2900,
+    "wiki": 20300,
+    "mwezi": 87000
+  }
 };
-
 const lockSolutionSteps = {
     "v-trust": `Lock Solution ya V-Trust inatumika kwa simu za Vivo. Hatua za kulock:
 a) Hakikisha simu ni mpya na haijawashwa.
@@ -271,7 +427,13 @@ const greetings = [
 ];
 
 const thankYouKeywords = [
+    "hapana",
+    "Ok",
+    "okay",
+    "sawa",
     "penda",
+    "kwaheri",
+    "ahsante",
     "nimesaidika",
     "saidia",
     "nimemaliza",
@@ -298,7 +460,9 @@ const thankYouKeywords = [
 ];
 
 const salesProcessKeywords = [
+    "1",
     "mauzo",
+    "mkopo",
     "jinsi ya kukopesha simu",
     "mkopo wa simu",
     "kukopa simu",
@@ -333,8 +497,11 @@ const salesProcessKeywords = [
 ];
 
 const paymentMethodsKeywords = [
+    "3",
     "mteja anataka kulipia",
     "lipia",
+    "kulipia",
+    "kulipa",
     "Malipo",
     "nawezaje kulipia",
     "malipo ya simu",
@@ -361,11 +528,14 @@ const paymentMethodsKeywords = [
 ];
 
 const maintenanceKeywords = [
+    "4",
     "nimeharibu simu",
     "mteja ameharibu simu",
     "simu ya mteja imeharibika",
     "imeharibika",
     "haribu",
+    "matengenezo",
+    "matengenezo ya simu",
     "Je, ninawezaje kutunza simu?",
     "Simu inahitaji matengenezo gani?",
     "Nifanye nini ili simu idumu?",
@@ -394,12 +564,20 @@ const maintenanceKeywords = [
 ];
 
 const lostPhoneKeywords = [
+    "5",
     "simu ya mteja imepotea",
     "Nimepoteza simu",
     "Imeibiwa",
+    "iliyopotea",
+    "kaimeibiwa",
+    "mteja ameibiwa",
+    "mteja kaibiwa",
     "Imepotea",
+    "mteja amepoteza",
     "potea",
+    "ibiwa",
     "poteza",
+    "kapoteza",
     "Imepotezwa",
     "Nimeibiwa",
     "Nifanye nini ikiwa nimepoteza simu?",
@@ -431,6 +609,7 @@ const lostPhoneKeywords = [
 
 const botIdentityKeywords = [
     "unafanya kazi gani?",
+    "nani?",
     "Wewe ni nani?",
     "Wewe ni chatbot gani?",
     "Je, wewe ni nani hasa?",
@@ -459,7 +638,10 @@ const botIdentityKeywords = [
 ];
 
 const allLockSolutionsKeywords = [
+    "6",
     "jinsi ya kulock simu",
+    "kulock simu",
+    "kulock",
     "Nipe lock solutions zote",
     "Je, hatua za kulock simu zote ni zipi?",
     "Ninawezaje kuona michakato yote ya kulock?",
@@ -499,11 +681,13 @@ const allLockSolutionsKeywords = [
 
 const lockPhoneKeywords = [
     "Je ninawezaje kulock simu?",
-    "nataka kulock simu"
+    "nataka kulock simu",
+    "lock solution",
+    "lock",
 ];
 
 const specificLockPhoneKeywords = [
-    "Je ninawezaje kulock simu ya Oppo?",
+    "simu za Oppo?",
     "lock oppo",
     "Kulock simu ya Samsung kunafanyaje?",
     "lock samsung",
@@ -543,8 +727,12 @@ const specificLockPhoneKeywords = [
 ];
 
 const phonePricingKeywords = [
+    "2",
     "vianzio",
+    "kianzio",
+    "vianzio vya simu",
     "bei za simu",
+    "bei ya simu",
     "vianzo vya simu",
     "Je, bei za simu ni zipi?",
     "Bei ya simu ni kiasi gani?",
@@ -642,6 +830,23 @@ const askSpecificPriceKeywords = [
     "ZTE"
 ];
 
+const nidaVerificationKeywords = [
+    "7",
+    "maswali hayaji",
+    "maswali",
+    "majibu",
+    "nida"
+];
+
+const stkPushOtpKeywords = [
+    "8",
+    "stk push",
+    "haiji",
+    "hapati",
+    "otp",
+    "push"
+];
+
 // Export for potential module usage
 window.botResponses = botResponses;
 window.phonePricingData = phonePricingData;
@@ -659,3 +864,5 @@ window.lockPhoneKeywords = lockPhoneKeywords;
 window.specificLockPhoneKeywords = specificLockPhoneKeywords;
 window.phonePricingKeywords = phonePricingKeywords;
 window.askSpecificPriceKeywords = askSpecificPriceKeywords;
+window.nidaVerificationKeywords = nidaVerificationKeywords;
+window.stkPushOtpKeywords = stkPushOtpKeywords;
