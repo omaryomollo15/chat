@@ -11,6 +11,34 @@ document.querySelectorAll('link[href], script[src], img[src]').forEach(element =
     }
 });
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const starryBackground = document.querySelector('.starry-background');
+    const starCount = 100; // Adjust number of stars
+    const sizes = ['small', 'medium', 'large'];
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        const sizeClass = `star-${sizes[Math.floor(Math.random() * sizes.length)]}`;
+        star.classList.add('star', sizeClass);
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.top = `${Math.random() * 100}vh`;
+        star.style.animationDelay = `${Math.random() * 20}s`; // Randomize start time
+        starryBackground.appendChild(star);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
 try {
     // DOM elements
     const chatContainer = document.getElementById('chat-messages');
